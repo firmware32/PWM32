@@ -31,5 +31,8 @@
 	  PWM32::set(ms);
 
   }
- 
+  uint16_t Servo32:: get()
+  {
+	  return PWM32::get();
+  }
 

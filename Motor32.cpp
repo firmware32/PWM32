@@ -30,5 +30,7 @@
 
   }
 
-
-
+ uint16_t Motor32::get()
+ {
+	 return PWM32::get();
+ }

@@ -303,6 +303,7 @@ PWM32::PWM32(uint32_t pin, pwm32_type_e pwmty)
 
 void PWM32::set(uint16_t ms) 
 {
+	_v = ms;
 #if defined(ARDUINO_SAMD_ZERO)
 	switch (pwm32s[channel].pwm32P->chan)
 	{

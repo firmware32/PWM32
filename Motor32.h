@@ -33,6 +33,8 @@ protected:
 public:
 	Motor32(uint8_t pin);
 	void set(uint16_t ms);
+	uint16_t get();
+
 };
 
 

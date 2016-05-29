@@ -22,8 +22,8 @@
 #ifndef _PWM32_h
 #define _PWM32_h
 
- 
-	#include "arduino.h"
+
+#include "arduino.h"
 
 #if defined( ARDUINO_SAMD_ZERO )
 #define PWM32_D2_CH0			 PORT_PMUX_PMUXE_F
@@ -35,8 +35,19 @@
 #define PWM32_D11_CH6          PORT_PMUX_PMUXE_E  
 #define PWM32_D13_CH7        PORT_PMUX_PMUXO_E  
 
-extern bool tcc_enabled[3];
 
+extern bool tcc_enabled[3];
+enum pwm32_pins_e {
+	PWM32_PIN_D2_1 = 2,
+	PWM32_PIN_D3_1 = 3,
+	PWM32_PIN_D4_2 = 4,
+	PWM32_PIN_D5_2 = 5,
+	PWM32_PIN_D6_2 = 6,
+	PWM32_PIN_D7_2 = 7,
+	PW32_PIN_D11_3 = 11,
+	PWM32_PIN_D13_3 = 13
+
+};
 #elif defined(ARDUINO_SAM_DUE)
 #define PWM32_D34_CH0			(1u << 2) 
 #define PWM32_D36_CH1			(1u << 4) 
@@ -79,7 +90,7 @@ typedef struct {
 } pwm32_t;
 extern pwm32_t  pwm32[8];
 #if defined( ARDUINO_SAMD_ZERO )
- 
+
 #endif
 void pwm32_init();
 
@@ -87,14 +98,15 @@ void pwm32_init();
 class PWM32
 {
 protected:
-	
+	uint16_t _v;
 public:
- 
-	bool isSet ;
+
+	bool isSet;
 	uint8_t channel;
 	pwm32_t * pwm32P;
 
-	   void set(uint16_t ms);
+	void set(uint16_t ms);
+	uint16_t get();
 	PWM32(uint32_t pin, pwm32_type_e pwmtype);
 };
 #endif
